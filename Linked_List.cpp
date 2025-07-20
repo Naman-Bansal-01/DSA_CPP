@@ -70,11 +70,28 @@ public:
         }
         Node* temp = head;
         for(int i=0; i<pos-1; i++){
+            if(temp==NULL){
+                cout<<"Invalid Position";
+                return;
+            }
             temp=temp->next;
         }
         Node* newnode = new Node(val);
         newnode->next = temp->next;
         temp->next=newnode;
+    }
+    int search(int key){
+        Node* temp = head;
+        int indx= 0;
+        while(temp != NULL){
+            if(temp->data==key){
+                return indx;
+            }
+            temp=temp->next;
+            indx++;
+        }
+        return -1;
+
     }
     void Printll() {
         Node* temp = head;
@@ -106,6 +123,7 @@ int main() {
     // ll.Pop_Back();
 
     ll.Printll();
+    cout<<ll.search(4);
 
     return 0;
 }
