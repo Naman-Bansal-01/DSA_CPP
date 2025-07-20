@@ -58,6 +58,24 @@ public:
         delete tail;
         tail = curr;
     }
+    void Insert(int pos, int val){
+        if(pos<0)
+        {
+            cout<<"Inalid Position"<<endl;
+            return;
+        }
+        if(pos==0){
+            Push_Front(val);
+            return;
+        }
+        Node* temp = head;
+        for(int i=0; i<pos-1; i++){
+            temp=temp->next;
+        }
+        Node* newnode = new Node(val);
+        newnode->next = temp->next;
+        temp->next=newnode;
+    }
     void Printll() {
         Node* temp = head;
         while(temp != NULL) {
@@ -73,9 +91,13 @@ int main() {
     ll.Push_Front(1);
     ll.Push_Front(2);
     ll.Push_Front(3);
+
     ll.Push_Back(4);
     ll.Push_Back(5);
     ll.Push_Back(6);
+
+    ll.Insert(3,10);
+    ll.Insert(4,11);
 
     // ll.Pop_Front();
     // ll.Pop_Front();
