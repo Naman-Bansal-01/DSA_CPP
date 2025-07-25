@@ -22,33 +22,34 @@ public:
         if(head ==  NULL) {
             head=tail=newnode;
             return;
-        } else {
-            newnode->next=head;
-            head=newnode;
-        }
+        } 
+        newnode->next=head;
+        head=newnode;
     }
     void Push_Back(int val) {
         Node* newnode= new Node(val);
         if(head ==  NULL) {
             head=tail=newnode;
             return;
-        } else {
-            tail->next=newnode;
-            tail = newnode;
-                }
+        } 
+        tail->next=newnode;
+        tail = newnode;
+                
     }
     void Pop_Front(){
         if(head == NULL){
             cout<<"Linked List Is Empty";
+            return;
         }
         Node* curr = head;
         head = head->next;
-        curr-> next = NULL;
+       // curr-> next = NULL;
         delete curr;
     }
     void Pop_Back(){
         if(head == NULL){
             cout<<"Linked List Is Empty";
+            return;
         }
         Node* curr = head;
         while(curr->next != tail){   // we are running this loop to fetch the previous value of tail
@@ -56,7 +57,7 @@ public:
         }
         curr-> next = NULL;  // here previous node of tail is null which means this node has become tail
         delete tail;
-        tail = curr;
+        tail=curr;
     }
     void Insert(int pos, int val){
         if(pos<0)
@@ -119,8 +120,9 @@ int main() {
     // ll.Pop_Front();
     // ll.Pop_Front();
     
-    // ll.Pop_Back();
-    // ll.Pop_Back();
+    ll.Pop_Back();
+    ll.Pop_Back();
+    ll.Push_Back(99);
 
     ll.Printll();
     cout<<ll.search(4);
